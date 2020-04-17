@@ -1,6 +1,6 @@
 # PeachPayment
 
-This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
+**This is a work in progress.**
 
 ## Installation
 
