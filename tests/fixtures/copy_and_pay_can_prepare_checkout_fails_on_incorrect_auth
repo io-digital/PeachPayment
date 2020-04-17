@@ -1,0 +1,33 @@
+
+-
+    request:
+        method: POST
+        url: 'https://test.oppwa.com/v1/checkouts'
+        headers:
+            Host: test.oppwa.com
+            Expect: null
+            Accept-Encoding: null
+            Authorization: 'Bearer lorem ipsum'
+            User-Agent: 'GuzzleHttp/6.5.1 curl/7.69.1 PHP/7.3.16'
+            Content-Type: application/x-www-form-urlencoded
+            Accept: null
+        body: 'entityId=8a8294174e735d0c014e78cf26461790&amount=20.00&currency=ZAR&paymentType=DB'
+    response:
+        status:
+            http_version: '1.1'
+            code: '401'
+            message: Unauthorized
+        headers:
+            Date: 'Tue, 14 Apr 2020 12:20:00 GMT'
+            Server: Apache-Coyote/1.1
+            Strict-Transport-Security: 'max-age=63072000; includeSubdomains; preload'
+            X-Content-Type-Options: 'nosniff, nosniff'
+            X-XSS-Protection: '1; mode=block'
+            Cache-Control: 'private, no-cache, no-store'
+            Pragma: no-cache
+            X-Application-WAF-Action: allow
+            WWW-Authenticate: 'Bearer token, error="invalid_token", error_description="Invalid Authorization header!""'
+            Content-Type: application/json;charset=UTF-8
+            Content-Length: '261'
+            Vary: Accept-Encoding
+        body: '{"result":{"code":"800.900.300","description":"invalid authentication information"},"buildNumber":"e3cfe9278811a4408f2396757139bf151bfadb22@2020-04-14 03:42:29 +0000","timestamp":"2020-04-14 12:20:00+0000","ndc":"BDC46B14D62C8208BBBBBDD13073D607.uat01-vm-tx02"}'

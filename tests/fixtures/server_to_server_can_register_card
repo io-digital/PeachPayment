@@ -1,0 +1,99 @@
+
+-
+    request:
+        method: POST
+        url: 'https://test.oppwa.com/v1/registrations'
+        headers:
+            Host: test.oppwa.com
+            Expect: null
+            Accept-Encoding: null
+            Authorization: Bearer
+            User-Agent: 'GuzzleHttp/6.5.1 curl/7.69.1 PHP/7.3.16'
+            Content-Type: application/x-www-form-urlencoded
+            Accept: null
+        body: 'paymentBrand=VISA&card.number=4200000000000000&card.holder=Jane+Jones&card.expiryMonth=05&card.expiryYear=2021&card.cvv=123'
+    response:
+        status:
+            http_version: '1.1'
+            code: '401'
+            message: Unauthorized
+        headers:
+            Date: 'Tue, 14 Apr 2020 13:34:40 GMT'
+            Server: Apache-Coyote/1.1
+            Strict-Transport-Security: 'max-age=63072000; includeSubdomains; preload'
+            X-Content-Type-Options: 'nosniff, nosniff'
+            X-XSS-Protection: '1; mode=block'
+            Cache-Control: 'private, no-cache, no-store'
+            Pragma: no-cache
+            X-Application-WAF-Action: allow
+            WWW-Authenticate: 'Bearer token, error="invalid_token", error_description="Invalid Authorization header!""'
+            Content-Type: application/json;charset=UTF-8
+            Content-Length: '247'
+            Vary: Accept-Encoding
+        body: '{"result":{"code":"800.900.300","description":"invalid authentication information"},"buildNumber":"e3cfe9278811a4408f2396757139bf151bfadb22@2020-04-14 03:42:29 +0000","timestamp":"2020-04-14 13:34:41+0000","ndc":"4c4833603e5d4becbcbfbca5432904ae"}'
+-
+    request:
+        method: POST
+        url: 'https://test.oppwa.com/v1/registrations'
+        headers:
+            Host: test.oppwa.com
+            Expect: null
+            Accept-Encoding: null
+            Authorization: 'Bearer OGE4Mjk0MTc0ZTczNWQwYzAxNGU3OGNmMjY2YjE3OTR8cXl5ZkhDTjgzZQ=='
+            User-Agent: 'GuzzleHttp/6.5.1 curl/7.69.1 PHP/7.3.16'
+            Content-Type: application/x-www-form-urlencoded
+            Accept: null
+        body: 'entityId=8a8294174e735d0c014e78cf26461790&paymentBrand=VISA&card.number=4200000000000000&card.holder=Jane+Jones&card.expiryMonth=05&card.expiryYear=2021&card.cvv=123'
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Tue, 14 Apr 2020 13:42:53 GMT'
+            Server: Apache-Coyote/1.1
+            Strict-Transport-Security: 'max-age=63072000; includeSubdomains; preload'
+            X-Content-Type-Options: 'nosniff, nosniff'
+            X-XSS-Protection: '1; mode=block'
+            Cache-Control: 'private, no-cache, no-store'
+            Pragma: no-cache
+            X-Application-WAF-Action: allow
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Allow-Credentials: 'true'
+            Content-Type: application/json;charset=UTF-8
+            Content-Length: '483'
+            Vary: Accept-Encoding
+        body: '{"id":"8ac7a4a27177536e017178eda7155520","result":{"code":"000.100.110","description":"Request successfully processed in ''Merchant in Integrator Test Mode''"},"card":{"bin":"420000","last4Digits":"0000","holder":"Jane Jones","expiryMonth":"05","expiryYear":"2021"},"risk":{"score":"100"},"buildNumber":"e3cfe9278811a4408f2396757139bf151bfadb22@2020-04-14 03:42:29 +0000","timestamp":"2020-04-14 13:42:52+0000","ndc":"8a8294174e735d0c014e78cf26461790_1b31a6178a1642f1a8150cbddf5bf479"}'
+-
+    request:
+        method: POST
+        url: 'https://test.oppwa.com/v1/registrations'
+        headers:
+            Host: test.oppwa.com
+            Expect: null
+            Accept-Encoding: null
+            Authorization: 'Bearer OGE4Mjk0MTc0ZTczNWQwYzAxNGU3OGNmMjY2YjE3OTR8cXl5ZkhDTjgzZQ=='
+            User-Agent: 'GuzzleHttp/6.5.1 curl/7.69.1 PHP/7.3.16'
+            Content-Type: application/x-www-form-urlencoded
+            Accept: null
+        body: 'entityId=8a8294174e735d0c014e78cf26461790&paymentBrand=VISA&card.number=4711100000000000&card.holder=Jane+Jones&card.expiryMonth=05&card.expiryYear=2021&card.cvv=123'
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Wed, 15 Apr 2020 12:21:23 GMT'
+            Server: Apache-Coyote/1.1
+            Strict-Transport-Security: 'max-age=63072000; includeSubdomains; preload'
+            X-Content-Type-Options: 'nosniff, nosniff'
+            X-XSS-Protection: '1; mode=block'
+            Cache-Control: 'private, no-cache, no-store'
+            Pragma: no-cache
+            X-Application-WAF-Action: allow
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Allow-Credentials: 'true'
+            Content-Type: application/json;charset=UTF-8
+            Content-Length: '460'
+            Vary: Accept-Encoding
+        body: '{"id":"8ac7a4a2717c75b801717dc969c94029","result":{"code":"000.100.110","description":"Request successfully processed in ''Merchant in Integrator Test Mode''"},"card":{"bin":"471110","last4Digits":"0000","holder":"Jane Jones","expiryMonth":"05","expiryYear":"2021"},"buildNumber":"e3cfe9278811a4408f2396757139bf151bfadb22@2020-04-14 03:42:29 +0000","timestamp":"2020-04-15 12:21:24+0000","ndc":"8a8294174e735d0c014e78cf26461790_9b8087a28f554e8cb8a130dc76339c64"}'

@@ -1,0 +1,135 @@
+
+-
+    request:
+        method: POST
+        url: 'https://test.oppwa.com/v1/registrations'
+        headers:
+            Host: test.oppwa.com
+            Expect: null
+            Accept-Encoding: null
+            Authorization: 'Bearer OGE4Mjk0MTc0ZTczNWQwYzAxNGU3OGNmMjY2YjE3OTR8cXl5ZkhDTjgzZQ=='
+            User-Agent: 'GuzzleHttp/6.5.1 curl/7.69.1 PHP/7.3.16'
+            Content-Type: application/x-www-form-urlencoded
+            Accept: null
+        body: 'entityId=8a8294174e735d0c014e78cf26461790&paymentBrand=VISA&card.number=4200000000000000&card.holder=Jane+Jones&card.expiryMonth=05&card.expiryYear=2021&card.cvv=123'
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Wed, 15 Apr 2020 12:21:24 GMT'
+            Server: Apache-Coyote/1.1
+            Strict-Transport-Security: 'max-age=63072000; includeSubdomains; preload'
+            X-Content-Type-Options: 'nosniff, nosniff'
+            X-XSS-Protection: '1; mode=block'
+            Cache-Control: 'private, no-cache, no-store'
+            Pragma: no-cache
+            X-Application-WAF-Action: allow
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Allow-Credentials: 'true'
+            Content-Type: application/json;charset=UTF-8
+            Content-Length: '483'
+            Vary: Accept-Encoding
+        body: '{"id":"8ac7a49f717c6b0701717dc96d2301b6","result":{"code":"000.100.110","description":"Request successfully processed in ''Merchant in Integrator Test Mode''"},"card":{"bin":"420000","last4Digits":"0000","holder":"Jane Jones","expiryMonth":"05","expiryYear":"2021"},"risk":{"score":"100"},"buildNumber":"e3cfe9278811a4408f2396757139bf151bfadb22@2020-04-14 03:42:29 +0000","timestamp":"2020-04-15 12:21:24+0000","ndc":"8a8294174e735d0c014e78cf26461790_0d40073659a24c5182dbe7c9fd01c05a"}'
+-
+    request:
+        method: POST
+        url: 'https://test.oppwa.com/v1/registrations/8ac7a49f717c6b0701717dc96d2301b6/payments'
+        headers:
+            Host: test.oppwa.com
+            Expect: null
+            Accept-Encoding: null
+            Authorization: 'Bearer OGE4Mjk0MTc0ZTczNWQwYzAxNGU3OGNmMjY2YjE3OTR8cXl5ZkhDTjgzZQ=='
+            User-Agent: 'GuzzleHttp/6.5.1 curl/7.69.1 PHP/7.3.16'
+            Content-Type: application/x-www-form-urlencoded
+            Accept: null
+        body: 'entityId=8a8294174e735d0c014e78cf26461790&amount=20.00&currency=ZAR&paymentType=DB'
+    response:
+        status:
+            http_version: '1.1'
+            code: '400'
+            message: 'Bad Request'
+        headers:
+            Date: 'Wed, 15 Apr 2020 12:21:25 GMT'
+            Server: Apache-Coyote/1.1
+            Strict-Transport-Security: 'max-age=63072000; includeSubdomains; preload'
+            X-Content-Type-Options: 'nosniff, nosniff'
+            X-XSS-Protection: '1; mode=block'
+            Cache-Control: 'private, no-cache, no-store'
+            Pragma: no-cache
+            X-Application-WAF-Action: allow
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Allow-Credentials: 'true'
+            Content-Type: application/json;charset=UTF-8
+            Content-Length: '421'
+            Vary: Accept-Encoding
+            Connection: close
+        body: '{"id":"8ac7a4a0717c75bb01717dc9708456e3","paymentType":"DB","result":{"code":"100.390.109","description":"Transaction rejected because of VISA status ''U'' or AMEX status ''N'' or ''U'' in 3DSecure program"},"risk":{"score":"100"},"buildNumber":"e3cfe9278811a4408f2396757139bf151bfadb22@2020-04-14 03:42:29 +0000","timestamp":"2020-04-15 12:21:25+0000","ndc":"8a8294174e735d0c014e78cf26461790_b696123b05fc47f2baf9e21430268047"}'
+-
+    request:
+        method: POST
+        url: 'https://test.oppwa.com/v1/registrations'
+        headers:
+            Host: test.oppwa.com
+            Expect: null
+            Accept-Encoding: null
+            Authorization: 'Bearer OGE4Mjk0MTc0ZTczNWQwYzAxNGU3OGNmMjY2YjE3OTR8cXl5ZkhDTjgzZQ=='
+            User-Agent: 'GuzzleHttp/6.5.1 curl/7.69.1 PHP/7.3.16'
+            Content-Type: application/x-www-form-urlencoded
+            Accept: null
+        body: 'entityId=8a8294174e735d0c014e78cf26461790&paymentBrand=VISA&card.number=4711100000000000&card.holder=Jane+Jones&card.expiryMonth=05&card.expiryYear=2021&card.cvv=123'
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Wed, 15 Apr 2020 12:31:16 GMT'
+            Server: Apache-Coyote/1.1
+            Strict-Transport-Security: 'max-age=63072000; includeSubdomains; preload'
+            X-Content-Type-Options: 'nosniff, nosniff'
+            X-XSS-Protection: '1; mode=block'
+            Cache-Control: 'private, no-cache, no-store'
+            Pragma: no-cache
+            X-Application-WAF-Action: allow
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Allow-Credentials: 'true'
+            Content-Type: application/json;charset=UTF-8
+            Content-Length: '460'
+            Vary: Accept-Encoding
+        body: '{"id":"8ac7a49f717c6b0701717dd273b558b4","result":{"code":"000.100.110","description":"Request successfully processed in ''Merchant in Integrator Test Mode''"},"card":{"bin":"471110","last4Digits":"0000","holder":"Jane Jones","expiryMonth":"05","expiryYear":"2021"},"buildNumber":"e3cfe9278811a4408f2396757139bf151bfadb22@2020-04-14 03:42:29 +0000","timestamp":"2020-04-15 12:31:16+0000","ndc":"8a8294174e735d0c014e78cf26461790_5cb6c739e60d4c2b8d222b6fdb764f2e"}'
+-
+    request:
+        method: POST
+        url: 'https://test.oppwa.com/v1/registrations/8ac7a49f717c6b0701717dd273b558b4/payments'
+        headers:
+            Host: test.oppwa.com
+            Expect: null
+            Accept-Encoding: null
+            Authorization: 'Bearer OGE4Mjk0MTc0ZTczNWQwYzAxNGU3OGNmMjY2YjE3OTR8cXl5ZkhDTjgzZQ=='
+            User-Agent: 'GuzzleHttp/6.5.1 curl/7.69.1 PHP/7.3.16'
+            Content-Type: application/x-www-form-urlencoded
+            Accept: null
+        body: 'entityId=8a8294174e735d0c014e78cf26461790&amount=20.00&currency=ZAR&paymentType=DB'
+    response:
+        status:
+            http_version: '1.1'
+            code: '400'
+            message: 'Bad Request'
+        headers:
+            Date: 'Wed, 15 Apr 2020 12:31:17 GMT'
+            Server: Apache-Coyote/1.1
+            Strict-Transport-Security: 'max-age=63072000; includeSubdomains; preload'
+            X-Content-Type-Options: 'nosniff, nosniff'
+            X-XSS-Protection: '1; mode=block'
+            Cache-Control: 'private, no-cache, no-store'
+            Pragma: no-cache
+            X-Application-WAF-Action: allow
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Allow-Credentials: 'true'
+            Content-Type: application/json;charset=UTF-8
+            Content-Length: '470'
+            Vary: Accept-Encoding
+            Connection: close
+        body: '{"result":{"code":"200.300.404","description":"invalid or missing parameter","parameterErrors":[{"name":"shopperResultUrl","value":null,"message":"must be present so the shopper''s browser can be redirected back to you after being redirected to the third party''s website"}]},"buildNumber":"e3cfe9278811a4408f2396757139bf151bfadb22@2020-04-14 03:42:29 +0000","timestamp":"2020-04-15 12:31:17+0000","ndc":"8a8294174e735d0c014e78cf26461790_ba2fd7e20dd04032995171304a48070f"}'

@@ -1,0 +1,26 @@
+{
+    "name": "peach-payment",
+    "version": "1.0.0",
+    "description": "[![Latest Version on Packagist][ico-version]][link-packagist] [![Total Downloads][ico-downloads]][link-downloads] [![Build Status][ico-travis]][link-travis] [![StyleCI][ico-styleci]][link-styleci]",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "husky": "^3.0.8",
+        "lint-staged": "^9.4.1"
+    },
+    "lint-staged": {
+        "*.php": [
+            "php ./vendor/bin/php-cs-fixer fix --config .php_cs",
+            "git add"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    }
+}
