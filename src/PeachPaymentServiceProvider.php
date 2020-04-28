@@ -24,6 +24,8 @@ class PeachPaymentServiceProvider extends ServiceProvider
                 __DIR__.'/../database/migrations/create_payment_results_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_payment_results_table.php'),
                 __DIR__.'/../database/migrations/create_payment_events_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_payment_events_table.php'),
             ], 'peachpayment-migrations');
+
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         }
     }
 
