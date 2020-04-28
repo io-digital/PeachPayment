@@ -15,6 +15,8 @@ if (config('app.env') === 'production') {
         'api_uri_live'              => 'https://oppwa.com/',
         'api_uri_version'           => 'v1/',
         'skip_3ds_for_stored_cards' => true,
+        'webhook_url'               => '/peach-webhook',
+        'webhook_excluded'           => ['card', 'authentication'],
     ];
 }
 
@@ -32,4 +34,6 @@ return [
     'api_uri_live'              => 'https://oppwa.com/',
     'api_uri_version'           => 'v1/',
     'skip_3ds_for_stored_cards' => true,
+    'webhook_url'               => '/peach-webhook',
+    'webhook_excluded'           => ['card', 'authentication'],
 ];

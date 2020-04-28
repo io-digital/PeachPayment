@@ -94,6 +94,16 @@ $response->isValidationError($resultCode); // true|false
 Saving the response is also available:
 `$response->save($result, $paymentCard);`
 
+### Webhooks
+
+The following change needs to be made in your `app/Http/Middleware/VerifyCsrfToken.php` file:
+
+```php
+protected $except = [
+        config('peachpayment.webhook_url')
+    ];
+```
+
 ### Helpers
 #### Setting.php
 This class allows you to inject or modify your Peach Payment credentials
