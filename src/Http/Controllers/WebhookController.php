@@ -19,7 +19,8 @@ class WebhookController extends Controller
     public function index(Request $request)
     {
         $event = new PaymentEvent();
-        $payload = $request->get('payload');
+        $body = $this->decryptMessage($request);
+        $payload = $body['payload'];
 
         $excludedValues = Config::get('peachpayment.webhook_excluded');
 
@@ -27,11 +28,25 @@ class WebhookController extends Controller
             unset($payload[$exclude]);
         }
 
-        $event->type = $request->get('type');
-        $event->action = $request->get('action');
+        $event->type = $body['type'];
+        $event->action = $body['action'];
         $event->payload = $payload;
         $event->save();
 
         return response([], Response::HTTP_OK);
+    }
+
+    private function decryptMessage(Request $request)
+    {
+        $keyFromConfiguration = Config::get('peachpayment.webhook_secret_key');
+        $ivFromHeader = $request->header('X-Initialization-Vector');
+        $authTagFromHeader = $request->header('X-Authentication-Tag');
+
+        $key = hex2bin($keyFromConfiguration);
+        $iv = hex2bin($ivFromHeader);
+        $authTag = hex2bin($authTagFromHeader);
+        $cipherText = hex2bin($request->getContent());
+
+        return openssl_decrypt($cipherText, 'aes-256-gcm', $key, OPENSSL_RAW_DATA, $iv, $authTag);
     }
 }

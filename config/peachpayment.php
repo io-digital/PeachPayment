@@ -16,7 +16,8 @@ if (config('app.env') === 'production') {
         'api_uri_version'           => 'v1/',
         'skip_3ds_for_stored_cards' => true,
         'webhook_url'               => '/peach-webhook',
-        'webhook_excluded'           => ['card', 'authentication'],
+        'webhook_excluded'          => ['card', 'authentication'],
+        'webhook_secret_key'        => env('PEACH_PAYMENTS_WEBHOOK_SECRET_KEY'),
     ];
 }
 
@@ -35,5 +36,6 @@ return [
     'api_uri_version'           => 'v1/',
     'skip_3ds_for_stored_cards' => true,
     'webhook_url'               => '/peach-webhook',
-    'webhook_excluded'           => ['card', 'authentication'],
+    'webhook_excluded'          => ['card', 'authentication'],
+    'webhook_secret_key'        => env('PEACH_PAYMENTS_WEBHOOK_SECRET_KEY'),
 ];
