@@ -52,10 +52,10 @@ class PaymentCard extends Model
     }
 
     public function saveResult($results, $owner)
-    {
+    {        
         $result = $this->results()->create([
-            'transaction_id' => $results['id'] ?? null,
-            'registration_id' => $results['registrationId'] ?? null,
+            'transaction_id' => $results['merchantTransactionId'] ?? null,
+            'registration_id' => $results['id'] ?? null,
             'payment_type' => $results['paymentType'] ?? null,
             'amount' => isset($results['amount']) ? ($results['amount'] * 100) : null,
             'currency' => $results['currency'] ?? 'ZAR',
@@ -82,7 +82,7 @@ class PaymentCard extends Model
             'holder' => $result['card']['holder'],
             'expiry_month' => $result['card']['expiryMonth'],
             'expiry_year' => $result['card']['expiryYear'],
-            'registration_id' => $result['id'],
+            'registration_id' => $result['registrationId'] ?? $result['id'],
         ];
 
         $model = static::query()->create($formattedAttrs);

@@ -117,17 +117,26 @@ class CopyAndPay extends PaymentScheme
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function registerCardDuringPayment(int $amount)
+    public function registerCardDuringPayment(int $amount, $preAuth = false)
     {
-        return $this->client->request('POST', 'checkouts', [
+        $response = $this->client->request('POST', 'checkouts', [
             'form_params' => [
                 'entityId'           => $this->settings->getEntityIdOnceOff(),
                 'amount'             => Currency::paymentFriendlyNumber($amount),
                 'currency'           => 'ZAR',
-                'paymentType'        => self::DEBIT,
+                'paymentType'        => $preAuth == true ? self::PREAUTHORISATION : self::DEBIT,
                 'createRegistration' => true,
             ],
         ])->getBody()->getContents();
+
+        $result = json_decode($response, true);
+        $responseCheck = new Response();
+
+        if ($responseCheck->isSuccessfulResponse($result['result']['code'])) {
+            return $result['id'];
+        }
+
+        return false;
     }
 
     /**
