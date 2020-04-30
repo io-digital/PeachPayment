@@ -103,6 +103,7 @@ class ServerToServer extends PaymentScheme
                         'currency'                => 'ZAR',
                         'paymentType'             => self::DEBIT,
                         'recurringType'           => $type,
+                        'merchantTransactionId'   => class_basename($owner) . '-' . $owner->id
                     ],
                 ]
             )->getBody()->getContents();
