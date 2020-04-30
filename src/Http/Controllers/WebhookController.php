@@ -65,7 +65,7 @@ class WebhookController extends Controller
         $authTag = hex2bin($authTagFromHeader);
         $cipherText = hex2bin($request->getContent());
 
-        $result = openssl_decrypt($cipherText, 'aes-256-gcm', $key, OPENSSL_RAW_DATA, $iv, $authTag)
+        $result = openssl_decrypt($cipherText, 'aes-256-gcm', $key, OPENSSL_RAW_DATA, $iv, $authTag);
 
         return json_decode($result, true);
     }
