@@ -2,6 +2,7 @@
 
 namespace IoDigital\PeachPayment\Api\PaymentMethods;
 
+use GuzzleHttp\Exception\ClientException;
 use IoDigital\PeachPayment\Api\Factory\PaymentScheme;
 use IoDigital\PeachPayment\Api\Response;
 use IoDigital\PeachPayment\Api\Setting;
@@ -97,7 +98,7 @@ class CopyAndPay extends PaymentScheme
                 'result' => $result,
                 'owner' => $owner
             ]);
-            
+
             return $result;
         }
 
@@ -113,7 +114,8 @@ class CopyAndPay extends PaymentScheme
      * and useful card information that you can store for
      * future 'one-click payment' requests.
      *
-     * @param int $amount
+     * @param int  $amount
+     * @param bool $preAuth
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
@@ -124,7 +126,7 @@ class CopyAndPay extends PaymentScheme
                 'entityId'           => $this->settings->getEntityIdOnceOff(),
                 'amount'             => Currency::paymentFriendlyNumber($amount),
                 'currency'           => 'ZAR',
-                'paymentType'        => $preAuth == true ? self::PREAUTHORISATION : self::DEBIT,
+                'paymentType'        => $preAuth === true ? self::PREAUTHORISATION : self::DEBIT,
                 'createRegistration' => true,
             ],
         ])->getBody()->getContents();
@@ -146,9 +148,10 @@ class CopyAndPay extends PaymentScheme
      * use should use INITIAL_PAYMENT.
      *
      *
-     * @param string $registrationId
-     * @param int  $amount
-     * @param string $type
+     * @param PaymentCard $card
+     * @param             $owner
+     * @param int         $amount
+     * @param string      $type
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
@@ -191,10 +194,9 @@ class CopyAndPay extends PaymentScheme
     /**
      * Perform a one click payment with a stored card.
      *
-     * @param string $registrationId
-     * @param int $amount
+     * @param PaymentCard $card
+     * @param int         $amount
      * @return mixed|\Psr\Http\Message\ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function oneClickPayment(PaymentCard $card, int $amount)
     {
