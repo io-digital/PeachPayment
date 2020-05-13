@@ -5,8 +5,8 @@ namespace IoDigital\PeachPayment\Api\PaymentMethods;
 use GuzzleHttp\Exception\ClientException;
 use IoDigital\PeachPayment\Api\CardBuilder;
 use IoDigital\PeachPayment\Api\Factory\PaymentScheme;
-use IoDigital\PeachPayment\Api\Setting;
 use IoDigital\PeachPayment\Api\Response;
+use IoDigital\PeachPayment\Api\Setting;
 use IoDigital\PeachPayment\Helpers\Currency;
 use IoDigital\PeachPayment\Models\PaymentCard;
 
@@ -24,8 +24,9 @@ class ServerToServer extends PaymentScheme
     /**
      * Do a standalone card registration.
      *
+     * @param CardBuilder $card
+     *
      * @return mixed|\Psr\Http\Message\ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function registerCard(CardBuilder $card)
     {
@@ -84,9 +85,10 @@ class ServerToServer extends PaymentScheme
      * $type defaults to REPEATED_PAYMENT but on first
      * use should use INITIAL_PAYMENT.
      *
-     * @param string $registrationId
-     * @param int  $amount
-     * @param string $type
+     * @param PaymentCard $card
+     * @param             $owner
+     * @param int         $amount
+     * @param string      $type
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
@@ -103,7 +105,7 @@ class ServerToServer extends PaymentScheme
                         'currency'                => 'ZAR',
                         'paymentType'             => self::DEBIT,
                         'recurringType'           => $type,
-                        'merchantTransactionId'   => class_basename($owner) . '-' . $owner->id
+                        'merchantTransactionId'   => class_basename($owner) . '-' . $owner->id,
                     ],
                 ]
             )->getBody()->getContents();
@@ -118,7 +120,6 @@ class ServerToServer extends PaymentScheme
             }
 
             return false;
-
         } catch (ClientException $e) {
             $this->logErrors('repeatedPayment', $e);
 
@@ -131,10 +132,10 @@ class ServerToServer extends PaymentScheme
     /**
      * Perform a one click payment with a stored card.
      *
-     * @param string $registrationId
-     * @param int $amount
+     * @param PaymentCard $card
+     * @param int         $amount
+     *
      * @return mixed|\Psr\Http\Message\ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function oneClickPayment(PaymentCard $card, int $amount)
     {
@@ -148,7 +149,7 @@ class ServerToServer extends PaymentScheme
                         'amount'                  => Currency::paymentFriendlyNumber($amount),
                         'currency'                => 'ZAR',
                         'paymentType'             => self::DEBIT,
-                        'recurringType'           => 'REPEATED'
+                        'recurringType'           => 'REPEATED',
                     ],
                 ]
             )->getBody()->getContents();
@@ -166,7 +167,6 @@ class ServerToServer extends PaymentScheme
      *
      * @param string $paymentId
      * @return mixed|\Psr\Http\Message\ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function paymentStatus(string $paymentId)
     {
@@ -190,7 +190,6 @@ class ServerToServer extends PaymentScheme
      *
      * @param string $registrationId
      * @return mixed|\Psr\Http\Message\ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function deleteCard(string $registrationId)
     {

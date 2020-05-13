@@ -30,6 +30,7 @@ The variables that can be used are:
 - `PEACH_PAYMENTS_ENTITY_ID_RECURRING`
 - `PEACH_PAYMENTS_TEST_MODE`
 - `PEACH_PAYMENTS_NOTIFICATION_URL`
+- `PEACH_PAYMENTS_WEBHOOK_SECRET_KEY`
 
 ### Migrations
 
@@ -38,6 +39,9 @@ This table can be used in conjunction with Server to Server functionality.
 
 #### `payment_results`
 This table can be used to store the results of transactions.
+
+#### `payment_events`
+This table can be used to store the event data received from webhooks.
 
 ## Usage
 
@@ -62,8 +66,8 @@ Methods available to Server to Server:
 ```php
 registerCard(CardBuilder $card);
 registerCardDuringPayment(CardBuilder $card);
-repeatedPayment(string $registrationId, int $amount, string $type = PaymentScheme::REPEATED_PAYMENT);
-oneClickPayment(string $registrationId, int $amount);
+repeatedPayment(PaymentCard $card, $owner, int $amount, string $type = PaymentScheme::REPEATED_PAYMENT);
+oneClickPayment(PaymentCard $card, int $amount);
 paymentStatus(string $paymentId);
 deleteCard(string $registrationId);
 
@@ -78,8 +82,8 @@ prepareCheckout(int $amount);
 getCheckoutRegistrationResult($checkoutId);
 registerCard();
 registerCardDuringPayment(int $amount);
-repeatedPayment(string $registrationId, int $amount, string $type = PaymentScheme::REPEATED_PAYMENT);
-paymentStatus(string $checkoutId)
+repeatedPayment(PaymentCard $card, $owner, int $amount, string $type = PaymentScheme::REPEATED_PAYMENT);
+paymentStatus(string $checkoutId);
 ```
 
 To determine the result of a transaction with Peach Payment, you can
