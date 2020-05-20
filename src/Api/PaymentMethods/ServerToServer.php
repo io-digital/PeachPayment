@@ -89,10 +89,12 @@ class ServerToServer extends PaymentScheme
      * @param             $owner
      * @param int         $amount
      * @param string      $type
+     * @param string      $customerName
+     * @param string      $invoiceId
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function repeatedPayment(PaymentCard $card, $owner, int $amount, string $type = PaymentScheme::REPEATED_PAYMENT)
+    public function repeatedPayment(PaymentCard $card, $owner, int $amount, string $customerName = null, $invoiceId = null, string $type = PaymentScheme::REPEATED_PAYMENT)
     {
         try {
             $response = $this->client->request(
@@ -106,6 +108,8 @@ class ServerToServer extends PaymentScheme
                         'paymentType'             => self::DEBIT,
                         'recurringType'           => $type,
                         'merchantTransactionId'   => class_basename($owner) . '-' . $owner->id,
+                        'customer.givenName'   => $customerName,
+                        'merchantInvoiceId'   => $invoiceId
                     ],
                 ]
             )->getBody()->getContents();

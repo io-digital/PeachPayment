@@ -24,7 +24,7 @@ abstract class PaymentScheme
 
     public function __construct(Setting $settings)
     {
-        
+
         $this->settings = $settings;
         $this->client = new Client([
             'base_uri' => $this->getApiUri(),
@@ -40,7 +40,7 @@ abstract class PaymentScheme
 
     //abstract protected function registerCardDuringPayment(CardBuilder $card);
 
-    abstract protected function repeatedPayment(PaymentCard $card, object $owner, int $amount, string $type);
+    abstract protected function repeatedPayment(PaymentCard $card, object $owner, int $amount, string $customerName, $invoiceId, string $type);
 
     abstract protected function oneClickPayment(PaymentCard $card, int $amount);
 

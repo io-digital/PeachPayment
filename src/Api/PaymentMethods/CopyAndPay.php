@@ -151,11 +151,13 @@ class CopyAndPay extends PaymentScheme
      * @param PaymentCard $card
      * @param             $owner
      * @param int         $amount
+     * @param string      $customerName
+     * @param string      $invoiceId
      * @param string      $type
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function repeatedPayment(PaymentCard $card, $owner, int $amount, string $type = PaymentScheme::REPEATED_PAYMENT)
+    public function repeatedPayment(PaymentCard $card, $owner, int $amount, string $customerName = null, $invoiceId = null, string $type = PaymentScheme::REPEATED_PAYMENT)
     {
         try {
             return $this->client->request(
