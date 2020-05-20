@@ -109,7 +109,7 @@ class ServerToServer extends PaymentScheme
                         'recurringType'           => $type,
                         'merchantTransactionId'   => class_basename($owner) . '-' . $owner->id,
                         'customer.givenName'   => $customerName,
-                        'merchantInvoiceId'   => $invoiceId,
+                        'merchantInvoiceId'   => $invoiceId
                     ],
                 ]
             )->getBody()->getContents();
