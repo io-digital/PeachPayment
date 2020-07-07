@@ -22,8 +22,7 @@ class Setting
     protected $testMode;
     protected $notificationUrl;
     protected $clientVersion;
-    protected $apiUriTest;
-    protected $apiUriLive;
+    protected $apiUri;
     protected $apiUriVersion;
     protected $skip3dsForStoredCards;
 
@@ -37,8 +36,7 @@ class Setting
         $this->testMode = Config::get('peachpayment.test_mode');
         $this->notificationUrl = Config::get('peachpayment.notification_url');
         $this->clientVersion = Config::get('peachpayment.client_version');
-        $this->apiUriTest = Config::get('peachpayment.api_uri_test');
-        $this->apiUriLive = Config::get('peachpayment.api_uri_live');
+        $this->apiUri = Config::get('peachpayment.api_uri');
         $this->apiUriVersion = Config::get('peachpayment.api_uri_version');
         $this->skip3dsForStoredCards = Config::get('peachpayment.skip_3ds_for_stored_cards');
     }
@@ -198,38 +196,19 @@ class Setting
     /**
      * @return mixed
      */
-    public function getApiUriTest()
+    public function getApiUri()
     {
-        return $this->apiUriTest;
+        return $this->apiUri;
     }
 
     /**
-     * @param mixed $apiUriTest
+     * @param mixed $apiUri
      *
      * @return Setting
      */
-    public function setApiUriTest($apiUriTest)
+    public function setApiUri($apiUri)
     {
-        $this->apiUriTest = $apiUriTest;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getApiUriLive()
-    {
-        return $this->apiUriLive;
-    }
-
-    /**
-     * @param mixed $apiUriLive
-     *
-     * @return Setting
-     */
-    public function setApiUriLive($apiUriLive)
-    {
-        $this->apiUriLive = $apiUriLive;
+        $this->apiUri = $apiUri;
         return $this;
     }
 
