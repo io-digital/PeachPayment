@@ -1,6 +1,6 @@
 <?php
 
-if (config('app.env') === 'production' ) {
+if (config('app.env') === 'production') {
     return [
         // Peach Payment variables
         'user'                      => env('PEACH_PAYMENTS_USER_ID'),
