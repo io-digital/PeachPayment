@@ -54,7 +54,7 @@ abstract class PaymentScheme
      */
     protected function getApiUri(bool $version = true): string
     {
-        $uri = $this->settings->getApiUriLive();
+        $uri = $this->settings->getApiUriTest();
 
         /*
          * testMode=EXTERNAL causes test transactions to be forwarded to the
@@ -63,8 +63,8 @@ abstract class PaymentScheme
          * testMode=INTERNAL causes transactions to be sent to our simulators,
          * which is useful when switching to the live endpoint for connectivity testing.
          * */
-        if (in_array(Config::get('app.env'), ['production', 'uat'])) {
-            $uri = $this->settings->getApiUriTest();
+        if (Config::get('app.env') === 'production') {
+            $uri = $this->settings->getApiUriLive();
         }
 
         return $version
@@ -79,7 +79,7 @@ abstract class PaymentScheme
      */
     protected function verifySsl(): bool
     {
-        return in_array(Config::get('app.env'), ['production', 'uat']);
+        return Config::get('app.env') === 'production';
     }
 
     /**
