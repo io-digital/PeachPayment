@@ -63,7 +63,7 @@ abstract class PaymentScheme
          * testMode=INTERNAL causes transactions to be sent to our simulators,
          * which is useful when switching to the live endpoint for connectivity testing.
          * */
-        if (Config::get('app.env') !== 'production') {
+        if (in_array(Config::get('app.env'), ['production', 'uat'])) {
             $uri = $this->settings->getApiUriTest();
         }
 
@@ -79,7 +79,7 @@ abstract class PaymentScheme
      */
     protected function verifySsl(): bool
     {
-        return Config::get('app.env') === 'production';
+        return in_array(Config::get('app.env'), ['production', 'uat']);
     }
 
     /**
