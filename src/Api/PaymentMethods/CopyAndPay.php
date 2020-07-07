@@ -88,7 +88,7 @@ class CopyAndPay extends PaymentScheme
     public function getCheckoutRegistrationResult($path, $owner)
     {
         $client = new \GuzzleHttp\Client();
-        $response = $client->get('https://test.oppwa.com' . $path)->getBody()->getContents();
+        $response = $client->get($this->getApiUri(false) . $path)->getBody()->getContents();
 
         $result = json_decode($response, true);
         $responseCheck = new Response();
