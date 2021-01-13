@@ -31,3 +31,73 @@
             Content-Length: '261'
             Vary: Accept-Encoding
         body: '{"result":{"code":"800.900.300","description":"invalid authentication information"},"buildNumber":"e3cfe9278811a4408f2396757139bf151bfadb22@2020-04-14 03:42:29 +0000","timestamp":"2020-04-14 12:20:00+0000","ndc":"BDC46B14D62C8208BBBBBDD13073D607.uat01-vm-tx02"}'
+-
+    request:
+        method: POST
+        url: 'https://test.oppwa.com/v1/checkouts'
+        headers:
+            Host: test.oppwa.com
+            Expect: ''
+            Accept-Encoding: ''
+            Authorization: 'Bearer lorem ipsum'
+            User-Agent: 'GuzzleHttp/6.5.5 curl/7.74.0 PHP/7.4.14'
+            Content-Type: application/x-www-form-urlencoded
+            Accept: ''
+        body: 'entityId=8a8294174e735d0c014e78cf26461790&amount=20.00&currency=ZAR&paymentType=DB'
+    response:
+        status:
+            http_version: '1.1'
+            code: '401'
+            message: Unauthorized
+        headers:
+            Date: 'Wed, 13 Jan 2021 08:36:16 GMT'
+            Server: Apache-Coyote/1.1
+            Strict-Transport-Security: 'max-age=63072000; includeSubdomains; preload'
+            X-Content-Type-Options: [nosniff, nosniff]
+            X-XSS-Protection: '1; mode=block'
+            Cache-Control: 'private, no-cache, no-store'
+            Pragma: no-cache
+            X-Application-WAF-Action: allow
+            WWW-Authenticate: 'Bearer token, error="invalid_token", error_description="Invalid Authorization header!""'
+            Content-Type: application/json;charset=UTF-8
+            Content-Length: '261'
+            Vary: Accept-Encoding
+        body: '{"result":{"code":"800.900.300","description":"invalid authentication information"},"buildNumber":"c87b65b5cb4319398317315da7427570b84cdb55@2021-01-08 13:09:29 +0000","timestamp":"2021-01-13 08:36:17+0000","ndc":"89C146D08F3CC9795BEE4D49CFE18AD7.uat01-vm-tx04"}'
+        curl_info:
+            url: 'https://test.oppwa.com/v1/checkouts'
+            content_type: application/json;charset=UTF-8
+            http_code: 401
+            header_size: 557
+            request_size: 292
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.531583
+            namelookup_time: 0.001484
+            connect_time: 0.172083
+            pretransfer_time: 0.36016
+            size_upload: !!float 82
+            size_download: !!float 261
+            speed_download: !!float 491
+            speed_upload: !!float 154
+            download_content_length: !!float 261
+            upload_content_length: !!float 82
+            starttransfer_time: 0.531541
+            redirect_time: !!float 0
+            redirect_url: ''
+            primary_ip: 185.147.172.99
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.60
+            local_port: 64880
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 360112
+            connect_time_us: 172083
+            namelookup_time_us: 1484
+            pretransfer_time_us: 360160
+            redirect_time_us: 0
+            starttransfer_time_us: 531541
+            total_time_us: 531583

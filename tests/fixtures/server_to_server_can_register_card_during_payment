@@ -33,3 +33,74 @@
             Vary: Accept-Encoding
             Connection: close
         body: '{"result":{"code":"200.300.404","description":"invalid or missing parameter","parameterErrors":[{"name":"shopperResultUrl","value":null,"message":"must be present so the shopper''s browser can be redirected back to you after being redirected to the third party''s website"}]},"buildNumber":"e3cfe9278811a4408f2396757139bf151bfadb22@2020-04-14 03:42:29 +0000","timestamp":"2020-04-15 12:20:24+0000","ndc":"8a8294174e735d0c014e78cf26461790_384ec209eda04dba9954be8a36ae0754"}'
+-
+    request:
+        method: POST
+        url: 'https://test.oppwa.com/v1/payments'
+        headers:
+            Host: test.oppwa.com
+            Expect: ''
+            Accept-Encoding: ''
+            Authorization: 'Bearer OGE4Mjk0MTc0ZTczNWQwYzAxNGU3OGNmMjY2YjE3OTR8cXl5ZkhDTjgzZQ=='
+            User-Agent: 'GuzzleHttp/6.5.5 curl/7.74.0 PHP/7.4.14'
+            Content-Type: application/x-www-form-urlencoded
+            Accept: ''
+        body: 'entityId=8a8294174e735d0c014e78cf26461790&amount=20.00&currency=ZAR&paymentType=DB&paymentBrand=VISA&card.number=4711100000000000&card.holder=Jane+Jones&card.expiryMonth=05&card.expiryYear=2021&card.cvv=123&createRegistration=1'
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Wed, 13 Jan 2021 08:36:20 GMT'
+            Server: Apache-Coyote/1.1
+            Strict-Transport-Security: 'max-age=63072000; includeSubdomains; preload'
+            X-Content-Type-Options: [nosniff, nosniff]
+            X-XSS-Protection: '1; mode=block'
+            Cache-Control: 'private, no-cache, no-store'
+            Pragma: no-cache
+            X-Application-WAF-Action: allow
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Allow-Credentials: 'true'
+            Content-Type: application/json;charset=UTF-8
+            Content-Length: '677'
+            Vary: Accept-Encoding
+        body: '{"id":"8ac7a4a176e3d0a60176fae377930346","registrationId":"8ac7a4a276e3db470176fae376fa7425","paymentType":"DB","paymentBrand":"VISA","amount":"20.00","currency":"ZAR","descriptor":"8134.0245.5893 Non3D_Channel ","result":{"code":"000.100.110","description":"Request successfully processed in ''Merchant in Integrator Test Mode''"},"card":{"bin":"471110","last4Digits":"0000","holder":"Jane Jones","expiryMonth":"05","expiryYear":"2021"},"customParameters":{"OPP_card.bin":"471110"},"buildNumber":"c87b65b5cb4319398317315da7427570b84cdb55@2021-01-08 13:09:29 +0000","timestamp":"2021-01-13 08:36:20+0000","ndc":"8a8294174e735d0c014e78cf26461790_4644ac7932d94e4c9262b01fd6badff8"}'
+        curl_info:
+            url: 'https://test.oppwa.com/v1/payments'
+            content_type: application/json;charset=UTF-8
+            http_code: 200
+            header_size: 512
+            request_size: 486
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 1.230855
+            namelookup_time: 0.001747
+            connect_time: 0.214929
+            pretransfer_time: 0.720354
+            size_upload: !!float 227
+            size_download: !!float 677
+            speed_download: !!float 550
+            speed_upload: !!float 184
+            download_content_length: !!float 677
+            upload_content_length: !!float 227
+            starttransfer_time: 1.230778
+            redirect_time: !!float 0
+            redirect_url: ''
+            primary_ip: 185.147.172.67
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.60
+            local_port: 64883
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 720307
+            connect_time_us: 214929
+            namelookup_time_us: 1747
+            pretransfer_time_us: 720354
+            redirect_time_us: 0
+            starttransfer_time_us: 1230778
+            total_time_us: 1230855

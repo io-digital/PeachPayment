@@ -97,3 +97,74 @@
             Content-Length: '460'
             Vary: Accept-Encoding
         body: '{"id":"8ac7a4a2717c75b801717dc969c94029","result":{"code":"000.100.110","description":"Request successfully processed in ''Merchant in Integrator Test Mode''"},"card":{"bin":"471110","last4Digits":"0000","holder":"Jane Jones","expiryMonth":"05","expiryYear":"2021"},"buildNumber":"e3cfe9278811a4408f2396757139bf151bfadb22@2020-04-14 03:42:29 +0000","timestamp":"2020-04-15 12:21:24+0000","ndc":"8a8294174e735d0c014e78cf26461790_9b8087a28f554e8cb8a130dc76339c64"}'
+-
+    request:
+        method: POST
+        url: 'https://test.oppwa.com/v1/registrations'
+        headers:
+            Host: test.oppwa.com
+            Expect: ''
+            Accept-Encoding: ''
+            Authorization: 'Bearer OGE4Mjk0MTc0ZTczNWQwYzAxNGU3OGNmMjY2YjE3OTR8cXl5ZkhDTjgzZQ=='
+            User-Agent: 'GuzzleHttp/6.5.5 curl/7.74.0 PHP/7.4.14'
+            Content-Type: application/x-www-form-urlencoded
+            Accept: ''
+        body: 'entityId=8a8294174e735d0c014e78cf26461790&paymentBrand=VISA&card.number=4200000000000000&card.holder=Jane+Jones&card.expiryMonth=05&card.expiryYear=2021&card.cvv=123'
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Wed, 13 Jan 2021 08:36:17 GMT'
+            Server: Apache-Coyote/1.1
+            Strict-Transport-Security: 'max-age=63072000; includeSubdomains; preload'
+            X-Content-Type-Options: [nosniff, nosniff]
+            X-XSS-Protection: '1; mode=block'
+            Cache-Control: 'private, no-cache, no-store'
+            Pragma: no-cache
+            X-Application-WAF-Action: allow
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Allow-Credentials: 'true'
+            Content-Type: application/json;charset=UTF-8
+            Content-Length: '483'
+            Vary: Accept-Encoding
+        body: '{"id":"8ac7a4a076e3db460176fae371e942ac","result":{"code":"000.100.110","description":"Request successfully processed in ''Merchant in Integrator Test Mode''"},"card":{"bin":"420000","last4Digits":"0000","holder":"Jane Jones","expiryMonth":"05","expiryYear":"2021"},"risk":{"score":"100"},"buildNumber":"c87b65b5cb4319398317315da7427570b84cdb55@2021-01-08 13:09:29 +0000","timestamp":"2021-01-13 08:36:18+0000","ndc":"8a8294174e735d0c014e78cf26461790_79432a3a128148718d210064bc31787c"}'
+        curl_info:
+            url: 'https://test.oppwa.com/v1/registrations'
+            content_type: application/json;charset=UTF-8
+            http_code: 200
+            header_size: 512
+            request_size: 429
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.889749
+            namelookup_time: 0.001768
+            connect_time: 0.169577
+            pretransfer_time: 0.355757
+            size_upload: !!float 165
+            size_download: !!float 483
+            speed_download: !!float 543
+            speed_upload: !!float 185
+            download_content_length: !!float 483
+            upload_content_length: !!float 165
+            starttransfer_time: 0.889712
+            redirect_time: !!float 0
+            redirect_url: ''
+            primary_ip: 185.147.172.66
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.60
+            local_port: 64882
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 355713
+            connect_time_us: 169577
+            namelookup_time_us: 1768
+            pretransfer_time_us: 355757
+            redirect_time_us: 0
+            starttransfer_time_us: 889712
+            total_time_us: 889749
