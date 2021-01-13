@@ -52,7 +52,7 @@ class PaymentCard extends Model
     }
 
     public function saveResult($results, $owner)
-    {        
+    {
         $result = $this->results()->create([
             'transaction_id' => $results['merchantTransactionId'] ?? null,
             'registration_id' => $results['id'] ?? null,
@@ -77,7 +77,7 @@ class PaymentCard extends Model
         $result = $attributes['result'];
 
         $formattedAttrs = [
-            'brand' => $result['paymentBrand'],
+            'brand' => $result['paymentBrand'] ?? '',
             'last_four' => $result['card']['last4Digits'],
             'holder' => $result['card']['holder'],
             'expiry_month' => $result['card']['expiryMonth'],
@@ -92,7 +92,7 @@ class PaymentCard extends Model
         }
 
         $model->save();
-        
+
         return $model;
     }
 }
