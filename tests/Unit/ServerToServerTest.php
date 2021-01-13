@@ -5,6 +5,7 @@ namespace IoDigital\PeachPayment\Tests\Unit;
 use IoDigital\PeachPayment\Api\CardBuilder;
 use IoDigital\PeachPayment\Api\Response;
 use IoDigital\PeachPayment\Api\Setting;
+use IoDigital\PeachPayment\Models\PaymentCard;
 use IoDigital\PeachPayment\PeachPayment;
 use IoDigital\PeachPayment\Tests\TestCase;
 use VCR\VCR;
@@ -115,7 +116,10 @@ class ServerToServerTest extends TestCase
 
         $this->settings->setEntityIdOnceRecurring('8a8294174e735d0c014e78cf26461790');
 
-        $response = $client->oneClickPayment($registrationId, 2000);
+        $paymentCard = PaymentCard::create([
+            'result' => $responseData,
+        ]);
+        $response = $client->oneClickPayment($paymentCard, 2000);
         $responseData = json_decode($response, true);
         $this->assertTrue($responseCheck->isSuccessfulResponse($responseData['result']['code']));
 
