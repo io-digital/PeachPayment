@@ -236,7 +236,7 @@ class CopyAndPay extends PaymentScheme
         try {
             return $this->client->request(
                 'GET',
-                "checkouts/$checkoutId/payments",
+                "checkouts/$checkoutId/payment",
                 [
                 'form_params' => [
                     'entityId' => $this->settings->getEntityIdOnceRecurring(),
