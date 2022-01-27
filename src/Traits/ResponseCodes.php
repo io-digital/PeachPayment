@@ -28,6 +28,7 @@ trait ResponseCodes
         '000.310.100' => 'Account updated',
         '000.310.101' => 'Account updated (Credit card expired)',
         '000.310.110' => 'No updates found, but account is valid',
+        '000.400.110' => 'Authentication successful (fricitionless flow)',
         '000.600.000' => 'Transaction succeeded due to external update',
     ];
 
@@ -80,6 +81,7 @@ trait ResponseCodes
         '000.400.106' => 'Invalid payer authentication response(PARes) in 3DSecure Transaction',
         '000.400.107' => 'Communication Error to VISA/Mastercard Directory Server',
         '000.400.108' => 'Cardholder Not Found - card number provided is not found in the ranges of the issuer',
+        '000.400.109' => 'Card is not enrolled for 3DS 2.0 and fallback to 3DS 1.0 is not enabled',
         '000.400.200' => 'Risk management check communication error',
     ];
 
@@ -103,6 +105,7 @@ trait ResponseCodes
         '100.390.111' => 'Communication Error to VISA/Mastercard Directory Server',
         '100.390.112' => 'Technical Error in 3D system',
         '100.390.113' => 'Unsupported User Device - Authentication not possible',
+        '300.100.100' => 'Acquirer or the issuer declined the transaction due to SCA was not applied. This is a soft decline, and the appropriate action to take is to re-submit the transaction with 3D Secure',
         '800.400.200' => 'Invalid Payer Authentication in 3DSecure transaction',
     ];
 

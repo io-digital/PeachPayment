@@ -151,26 +151,26 @@ class CopyAndPay extends PaymentScheme
      * @param PaymentCard $card
      * @param             $owner
      * @param int         $amount
-     * @param string      $customerName
+     * @param array       $optionalParams
      * @param string      $invoiceId
      * @param string      $type
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function repeatedPayment(PaymentCard $card, $owner, int $amount, string $customerName = null, $invoiceId = null, string $type = PaymentScheme::REPEATED_PAYMENT)
+    public function repeatedPayment(PaymentCard $card, $owner, int $amount, array $optionalParams = [], $invoiceId = null, string $type = PaymentScheme::REPEATED_PAYMENT)
     {
         try {
             return $this->client->request(
                 'POST',
                 "registrations/{$card->registration_id}/payments",
                 [
-                    'form_params' => [
+                    'form_params' => array_merge([
                         'entityId'                => $this->settings->getEntityIdOnceRecurring(),
                         'amount'                  => Currency::paymentFriendlyNumber($amount),
                         'currency'                => 'ZAR',
                         'paymentType'             => self::DEBIT,
                         'recurringType'           => $type,
-                    ],
+                    ], $optionalParams),
                 ]
             )->getBody()->getContents();
 
@@ -238,10 +238,10 @@ class CopyAndPay extends PaymentScheme
                 'GET',
                 "checkouts/$checkoutId/payments",
                 [
-                'form_params' => [
-                    'entityId' => $this->settings->getEntityIdOnceRecurring(),
-                ],
-            ]
+                    'form_params' => [
+                        'entityId' => $this->settings->getEntityIdOnceRecurring(),
+                    ],
+                ]
             )->getBody()->getContents();
         } catch (ClientException $e) {
             $this->logErrors('paymentStatus', $e);

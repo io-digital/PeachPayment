@@ -89,28 +89,27 @@ class ServerToServer extends PaymentScheme
      * @param             $owner
      * @param int         $amount
      * @param string      $type
-     * @param string      $customerName
+     * @param array       $optionalParams
      * @param string      $invoiceId
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function repeatedPayment(PaymentCard $card, $owner, int $amount, string $customerName = null, $invoiceId = null, string $type = PaymentScheme::REPEATED_PAYMENT)
+    public function repeatedPayment(PaymentCard $card, $owner, int $amount, array $optionalParams = [], $invoiceId = null, string $type = PaymentScheme::REPEATED_PAYMENT)
     {
         try {
             $response = $this->client->request(
                 'POST',
                 "registrations/{$card->registration_id}/payments",
                 [
-                    'form_params' => [
+                    'form_params' => array_merge([
                         'entityId'                => $this->settings->getEntityIdOnceRecurring(),
                         'amount'                  => Currency::paymentFriendlyNumber($amount),
                         'currency'                => 'ZAR',
                         'paymentType'             => self::DEBIT,
                         'recurringType'           => $type,
                         'merchantTransactionId'   => class_basename($owner) . '-' . $owner->id,
-                        'customer.givenName'   => $customerName,
                         'merchantInvoiceId'   => $invoiceId
-                    ],
+                    ], $optionalParams),
                 ]
             )->getBody()->getContents();
 
@@ -200,7 +199,7 @@ class ServerToServer extends PaymentScheme
         try {
             return $this->client->request(
                 'DELETE',
-                "registrations/$registrationId?entityId=".$this->settings->getEntityIdOnceOff(),
+                "registrations/$registrationId?entityId=" . $this->settings->getEntityIdOnceOff(),
                 [
                     'form_params' => [
                         'entityId' => config('peachpayments.once_off_entity_id'),
