@@ -22,6 +22,17 @@ abstract class PaymentScheme
     public const INITIAL_PAYMENT = 'INITIAL';
     public const REPEATED_PAYMENT = 'REPEATED';
 
+    /**
+     * List transaction types.
+     *
+     * @var string
+     */
+    public const TRANSACTION_TYPE_GOODS_OR_SERVICE_PURCHASE = '01';
+    public const TRANSACTION_TYPE_CHECK_ACCEPTANCE = '03';
+    public const TRANSACTION_TYPE_ACCOUNT_FUNDING = '10';
+    public const TRANSACTION_TYPE_QUASI_CASH_TRANSACTION = '11';
+    public const TRANSACTION_TYPE_PREPAID_ACTIVATION_AND_LOAD = '28';
+
     public function __construct(Setting $settings)
     {
 
@@ -40,7 +51,7 @@ abstract class PaymentScheme
 
     //abstract protected function registerCardDuringPayment(CardBuilder $card);
 
-    abstract protected function repeatedPayment(PaymentCard $card, object $owner, int $amount, string $customerName, $invoiceId, string $type);
+    abstract protected function repeatedPayment(PaymentCard $card, object $owner, int $amount, array $optionalParams, $invoiceId, string $type);
 
     abstract protected function oneClickPayment(PaymentCard $card, int $amount);
 
