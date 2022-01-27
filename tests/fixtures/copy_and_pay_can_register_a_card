@@ -32,3 +32,74 @@
             Content-Length: '310'
             Vary: Accept-Encoding
         body: '{"result":{"code":"000.200.100","description":"successfully created checkout"},"buildNumber":"e3cfe9278811a4408f2396757139bf151bfadb22@2020-04-14 03:42:29 +0000","timestamp":"2020-04-16 13:56:44+0000","ndc":"645E833E7199236F4695F307A343A5C8.uat01-vm-tx04","id":"645E833E7199236F4695F307A343A5C8.uat01-vm-tx04"}'
+-
+    request:
+        method: POST
+        url: 'https://test.oppwa.com/v1/checkouts'
+        headers:
+            Host: test.oppwa.com
+            Expect: ''
+            Accept-Encoding: ''
+            Authorization: 'Bearer OGE4Mjk0MTc0ZTczNWQwYzAxNGU3OGNmMjY2YjE3OTR8cXl5ZkhDTjgzZQ=='
+            User-Agent: 'GuzzleHttp/6.5.5 curl/7.74.0 PHP/7.4.14'
+            Content-Type: application/x-www-form-urlencoded
+            Accept: ''
+        body: 'entityId=8a8294174e735d0c014e78cf26461790&createRegistration=true'
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Wed, 13 Jan 2021 08:36:16 GMT'
+            Server: Apache-Coyote/1.1
+            Strict-Transport-Security: 'max-age=63072000; includeSubdomains; preload'
+            X-Content-Type-Options: [nosniff, nosniff]
+            X-XSS-Protection: '1; mode=block'
+            Cache-Control: 'private, no-cache, no-store'
+            Pragma: no-cache
+            X-Application-WAF-Action: allow
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Allow-Credentials: 'true'
+            Content-Type: application/json;charset=UTF-8
+            Content-Length: '310'
+            Vary: Accept-Encoding
+        body: '{"result":{"code":"000.200.100","description":"successfully created checkout"},"buildNumber":"c87b65b5cb4319398317315da7427570b84cdb55@2021-01-08 13:09:29 +0000","timestamp":"2021-01-13 08:36:17+0000","ndc":"5BC5E3C7977534C27C8BEDC760AD33F0.uat01-vm-tx02","id":"5BC5E3C7977534C27C8BEDC760AD33F0.uat01-vm-tx02"}'
+        curl_info:
+            url: 'https://test.oppwa.com/v1/checkouts'
+            content_type: application/json;charset=UTF-8
+            http_code: 200
+            header_size: 512
+            request_size: 324
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.529204
+            namelookup_time: 0.002262
+            connect_time: 0.172011
+            pretransfer_time: 0.358713
+            size_upload: !!float 65
+            size_download: !!float 310
+            speed_download: !!float 586
+            speed_upload: !!float 122
+            download_content_length: !!float 310
+            upload_content_length: !!float 65
+            starttransfer_time: 0.529089
+            redirect_time: !!float 0
+            redirect_url: ''
+            primary_ip: 185.147.172.66
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.60
+            local_port: 64881
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 358662
+            connect_time_us: 172011
+            namelookup_time_us: 2262
+            pretransfer_time_us: 358713
+            redirect_time_us: 0
+            starttransfer_time_us: 529089
+            total_time_us: 529204

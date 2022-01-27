@@ -35,7 +35,6 @@ abstract class PaymentScheme
 
     public function __construct(Setting $settings)
     {
-
         $this->settings = $settings;
         $this->client = new Client([
             'base_uri' => $this->getApiUri(),

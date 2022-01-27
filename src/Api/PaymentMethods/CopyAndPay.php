@@ -212,7 +212,7 @@ class CopyAndPay extends PaymentScheme
                         'amount'                  => Currency::paymentFriendlyNumber($amount),
                         'currency'                => 'ZAR',
                         'paymentType'             => self::DEBIT,
-                        'registrations[0].id'     => $registrationId,
+                        'registrations[0].id'     => $card->registration_id,
                     ],
                 ]
             )->getBody()->getContents();
@@ -236,7 +236,7 @@ class CopyAndPay extends PaymentScheme
         try {
             return $this->client->request(
                 'GET',
-                "checkouts/$checkoutId/payments",
+                "checkouts/$checkoutId/payment",
                 [
                     'form_params' => [
                         'entityId' => $this->settings->getEntityIdOnceRecurring(),
